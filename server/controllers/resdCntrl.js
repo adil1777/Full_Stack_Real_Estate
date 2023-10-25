@@ -12,7 +12,7 @@ export const createResidency = asyncHandler(async (req, res) => {
     city,
     facilities,
     image,
-    userEmail,
+    userEmail,    
   } = req.body.data;
 
   console.log(req.body.data);
@@ -53,7 +53,7 @@ export const getAllResidencies = async (req, res) => {
       res.send(residencies);
     } catch (error) {
       // Handle the error here
-      console.error("An error occurred:", error);
+      console.error("An error occurred:", error.message);
       res.status(500).send("An error occurred while fetching residencies");
     }
   };

@@ -2,50 +2,65 @@ import asyncHandler from "express-async-handler";
 
 import {prisma} from "../config/prismaConfig.js";
 
-export const createUser = asyncHandler(async (req,res)=>{
-    console.log("creating a user");
+// CreateUser 
+export const createUser = asyncHandler(async (req, res) => {
+  console.log("creating a user");
+  try {
+     const { email } = req.body;
+    const userExists = await prisma.user.findUnique({ where: { email: email } });
 
-    let {email} =req.body;
-   const userExists= await prisma.user.findUnique({where: {email:email}});
-   console.log(userExists);
-   if(!userExists) {
-    const user = await prisma.user.create({ data: req.body});
-    res.send({
-        meassage: "User registered successfully",
-        user:user,
+    if (userExists) {
+      // User already exists
+      return res.status(409).send({ message: "User already registered" });
+    }
+
+    const user = await prisma.user.create({ data: req.body });
+
+    res.status(201).send({
+      message: "User registered successfully",
+      user: user,
     });
-    // console.log(user);
-   }
-   else res.status(201).send({message: "User already registered"});
+    console.log("User created:", user);
+  } catch (error) {
+    console.error("Error creating user:", error);
+    res.status(500).send("An error occurred while creating a user");
+  }
+  
 });
 
+
 // fuction to book a visit to residency
+export const bookVisit = asyncHandler(async (req, res) => {
+  const { email, date } = req.body;
+  const { id } = req.params;
 
-export const bookVisit = asyncHandler(async (req , res)=>{
-       const {email,date}= req.body;
-       const {id} =req.params;
+  try {
+    const user = await prisma.user.findUnique({
+      where: { email },
+      select: { bookedVisits: true },
+    });
 
-       try{
-         const alreadyBooked = await prisma.user.findUnique({
-                where : {email:email},
-                select : {bookedVisits : true}
-         });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-         if(alreadyBooked.bookedVisits.some((visit)=>visit.id=== id)){
-            res.status(400).json({message: "This residency is already booked by you"})
-         }
-         else{
-                await prisma.user.update({
-                   where:{email:email},
-                   data:{
-                      bookedVisits : {push : {id , date}}
-                   } 
-                });
-         }
-         res.send("your visit is booked successfully");
-       } catch(err) {
-        throw new Error (err.message);
-       }
+    const isAlreadyBooked = user.bookedVisits.some((visit) => visit.id === id);
+
+    if (isAlreadyBooked) {
+      return res.status(400).json({ message: "This residency is already booked by you" });
+    } else {
+      const updatedUser = await prisma.user.update({
+        where: { email },
+        data: {
+          bookedVisits: { push: { id, date } },
+        },
+      });
+      return res.status(200).json({ message: "Your visit is booked successfully", user: updatedUser });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "An error occurred while booking a visit" });
+  }
 });
 
 // function to get all booking of a user

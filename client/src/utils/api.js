@@ -149,7 +149,7 @@ export const getAllFav = async (email, token)=>{
       {
         headers: {
           Authorization: `Bearer ${token}`,
-        },
+        },      
       }
     );
    // console.log(res)

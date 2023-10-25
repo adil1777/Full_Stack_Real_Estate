@@ -1,10 +1,11 @@
 import SearchBar from '../../components/SearchBar/SearchBar';
-import UseProperties from '../../hooks/UseProperties';
+
 import {PuffLoader} from  'react-spinners';
 import PropertyCard from '../../components/PropertyCard/PropertyCard';
 import { useContext, useState } from 'react';
 import '../Properties/Properties.css'
 import UserDetailContext from '../../Context/UserDetailContext';
+import UseProperties from '../../hooks/useProperties';
 
 const Bookings = () => {
   const{data, isError, isLoading}= UseProperties();
@@ -27,7 +28,7 @@ if(isLoading){
             height="80"
             width="80"
             radius={1}
-            colors= "#4066ff"
+            color= "#4066ff"
             aria-label="puff-loading"
           />
      </div>
