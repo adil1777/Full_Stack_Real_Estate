@@ -25,7 +25,7 @@ if(isLoading){
             height="80"
             width="80"
             radius={1}
-            colors= "#4066ff"
+            color= "#4066ff"
             aria-label="puff-loading"
           />
      </div>

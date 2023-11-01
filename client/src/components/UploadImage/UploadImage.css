@@ -3,14 +3,14 @@
     gap:2rem;
 }
 .uploadZone {
-    width:70%;
+    width:75%;
     height:20rem;
     border: 2px dashed grey;
     cursor: pointer;
 }
 .uploadedImage{
-    width: 70%;
-    height:20rem;
+    width: 75%;
+    height:25rem;
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;

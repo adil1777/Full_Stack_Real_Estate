@@ -73,7 +73,7 @@ const Contact = () => {
                           <div className="flexColStart detail">
                             <span className="primaryText">Message</span>
                             <span className="secondaryText">021 145 123 14</span>
-                          </div>
+                          </div>z
                     </div>
                      <div className="flexCenter button">
                           Message Now

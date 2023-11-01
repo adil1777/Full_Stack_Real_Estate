@@ -27,11 +27,11 @@ const Layout = () => {
 
       const res = await getAccessTokenWithPopup({
         authorizationParams: {
-          audience: "http://localhost:8000",
+          audience: "https://dev-bkhop2updo2886ij.us.auth0.com/api/v2/",
           scope: "openid profile email",
         },
       });
-      console.log(res);
+      // console.log(res);
       localStorage.setItem("access_token", res);
       setUserDetails((prev) => ({ ...prev, token: res }));
        mutate(res)

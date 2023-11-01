@@ -1,10 +1,11 @@
 import asyncHandler from "express-async-handler";
-
 import {prisma} from "../config/prismaConfig.js";
+
+
 
 // CreateUser 
 export const createUser = asyncHandler(async (req, res) => {
-  console.log("creating a user");
+  // console.log("creating a user");
   try {
      const { email } = req.body;
     const userExists = await prisma.user.findUnique({ where: { email: email } });
@@ -15,10 +16,13 @@ export const createUser = asyncHandler(async (req, res) => {
     }
 
     const user = await prisma.user.create({ data: req.body });
+   
+
 
     res.status(201).send({
       message: "User registered successfully",
       user: user,
+      token,
     });
     console.log("User created:", user);
   } catch (error) {
@@ -27,7 +31,8 @@ export const createUser = asyncHandler(async (req, res) => {
   }
   
 });
-
+ 
+ 
 
 // fuction to book a visit to residency
 export const bookVisit = asyncHandler(async (req, res) => {
@@ -123,6 +128,7 @@ export const cancelBooking = asyncHandler(async (req, res) => {
         return res.status(500).json({ message: "An error occurred" });
     }
 });
+
 
 // Function to add a residency to the user's favorite list
 export const toFav = asyncHandler(async (req, res) => {

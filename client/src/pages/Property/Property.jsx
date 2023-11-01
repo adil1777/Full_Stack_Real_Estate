@@ -76,7 +76,7 @@ const Property = () => {
         </div>
 
         {/* Image */}
-        <img src={data?.image} alt="home image" />
+        <img src={data?.image}  alt="home image" />
 
         <div className="flexCenter property-details">
           {/* Left side */}

@@ -31,7 +31,7 @@ const BookingModal = ({ opened, setOpened, email, propertyId }) => {
     }))
   } ;
 
-   console.log(token)
+  //  console.log(token)
 
   const {mutate, isLoading } = useMutation({
        mutationFn:() => bookVisit(value , propertyId , email, token),

@@ -5,7 +5,7 @@ import PropertyCard from '../../components/PropertyCard/PropertyCard';
 import { useContext, useState } from 'react';
 import '../Properties/Properties.css'
 import UserDetailContext from '../../Context/UserDetailContext';
-import UseProperties from '../../hooks/useProperties';
+import UseProperties from '../../hooks/UseProperties';
 
 const Bookings = () => {
   const{data, isError, isLoading}= UseProperties();

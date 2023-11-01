@@ -5,7 +5,7 @@ import {
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
-  AccordionItemState
+  AccordionItemState,
 } from 'react-accessible-accordion';
 import "react-accessible-accordion/dist/fancy-example.css";
 import { MdOutlineArrowDropDown } from 'react-icons/md';
@@ -15,7 +15,7 @@ import './Value.css';
 const Value = () => {
 
     return (
-        <section className="v-wrapper">
+        <section id="Value" className="v-wrapper">
           <div className="paddings innerWidth flexCenter v-container">
             {/* left side */}
             <div className="v-left">
@@ -33,6 +33,7 @@ const Value = () => {
                 <br/>
                 We believe a good place to live can make your life better 
               </span>
+              
               <Accordion
                 className="accordion"
                 allowMultipleExpanded={false}
