@@ -1,13 +1,13 @@
 
 import './Properties.css'
 import SearchBar from '../../components/SearchBar/SearchBar';
-import UseProperties from '../../hooks/useProperties';
+import useProperties from '../../hooks/useProperties';
 import {PuffLoader} from  'react-spinners';
 import PropertyCard from '../../components/PropertyCard/PropertyCard';
 import { useState } from 'react';
 
 const Properties = () => {
-  const{data, isError, isLoading}= UseProperties();
+  const{data, isError, isLoading}= useProperties();
   const[filter , setFilter] = useState("");
   
   if(isError){
