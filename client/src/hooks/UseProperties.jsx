@@ -1,20 +1,21 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { getAllProperties } from '../utils/api'; // Import the function from your API file
+import { getAllProperties } from '../utils/api';
 
-const useProperties = () => {
-  const { data, isLoading, isError, refetch } = useQuery(
-    'allProperties',
-    getAllProperties,
-    { refetchOnWindowFocus: false }
-  );
+const UseProperties = () => {
+    const { data, isLoading, isError, refetch } = useQuery(
+        'allProperties',
+        getAllProperties,
+        { refetchOnWindowFocus: false }
+      );
+    
+      return {
+        data,
+        isError,
+        isLoading,
+        refetch,
+      };
+    };
 
-  return {
-    data,
-    isError,
-    isLoading,
-    refetch,
-  };
-};
+export default UseProperties
 
-export default useProperties;
