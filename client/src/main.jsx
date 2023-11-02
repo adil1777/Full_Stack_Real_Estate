@@ -15,7 +15,7 @@ root.render(
     domain="dev-bkhop2updo2886ij.us.auth0.com"
     clientId="iogTJQob9YiGgtIvX5UjXiKxBxX2jm09"
     authorizationParams={{
-      redirect_uri:"http://localhost:5173"
+      redirect_uri:"https://full-stack-real-estate-jade.vercel.app"
     }}
   >
     <App />
