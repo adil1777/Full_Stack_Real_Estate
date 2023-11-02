@@ -17,5 +17,5 @@ const UseProperties = () => {
       };
     };
 
-export default UseProperties
+export default UseProperties;
 

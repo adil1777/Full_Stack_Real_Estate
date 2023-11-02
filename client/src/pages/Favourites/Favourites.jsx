@@ -1,5 +1,5 @@
 import SearchBar from '../../components/SearchBar/SearchBar';
-import useProperties from '../../hooks/useProperties';
+import UseProperties from '../../hooks/UseProperties';
 import {PuffLoader} from  'react-spinners';
 import PropertyCard from '../../components/PropertyCard/PropertyCard';
 import { useContext, useState } from 'react';
@@ -7,7 +7,7 @@ import '../Properties/Properties.css'
 import UserDetailContext from '../../Context/UserDetailContext';
 
 const Favourites = () => {
-  const{data, isError, isLoading}= useProperties();
+  const{data, isError, isLoading}= UseProperties();
   const[filter , setFilter] = useState("");
   const {userDetails } = useContext(UserDetailContext);
    const favourites = userDetails?.favourites || [];
