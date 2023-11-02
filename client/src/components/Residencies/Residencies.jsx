@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-// Import Swiper styles
+
 import "swiper/css";
 import "./Residencies.css";
 import { sliderSettings } from "../../utils/common";
@@ -45,12 +45,17 @@ const Residencies = () => {
         <Swiper {...sliderSettings}>
           <SlideNextButton />
           {/* slider */}
-          {data.slice(0, 8).map((card, i) => (
-            <SwiperSlide key={i}>
-              <PropertyCard card={card}/>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+
+          {Array.isArray(data) ? (
+             data.slice(0, 8).map((card, i) => (
+               <SwiperSlide key={i}>
+                  <PropertyCard card={card} />
+                   </SwiperSlide>
+                 ))
+          ) : (
+               <div>No data available.</div>
+                )}
+          </Swiper>
       </div>
     </div>
   );
