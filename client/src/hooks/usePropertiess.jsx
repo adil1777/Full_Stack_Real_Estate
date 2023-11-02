@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { getAllProperties } from '../utils/api';
 
-const UseProperties = () => {
+const usePropertiess = () => {
     const { data, isLoading, isError, refetch } = useQuery(
         'allProperties',
         getAllProperties,
@@ -17,5 +17,6 @@ const UseProperties = () => {
       };
     };
 
-export default UseProperties;
+export default usePropertiess;
+
 

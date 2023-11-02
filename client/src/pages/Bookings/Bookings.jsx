@@ -5,10 +5,10 @@ import PropertyCard from '../../components/PropertyCard/PropertyCard';
 import { useContext, useState } from 'react';
 import '../Properties/Properties.css'
 import UserDetailContext from '../../Context/UserDetailContext';
-import UseProperties from '../../hooks/useProperties';
+import usePropertiess from '../../hooks/usePropertiess';
 
 const Bookings = () => {
-  const{data, isError, isLoading}= UseProperties();
+  const{data, isError, isLoading}= usePropertiess();
   const[filter , setFilter] = useState("");
   const {userDetails} = useContext(UserDetailContext);
   const bookings = userDetails?.bookings || [];
