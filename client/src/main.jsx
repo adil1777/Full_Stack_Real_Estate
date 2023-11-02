@@ -15,7 +15,7 @@ root.render(
     domain="dev-bkhop2updo2886ij.us.auth0.com"
     clientId="iogTJQob9YiGgtIvX5UjXiKxBxX2jm09"
     authorizationParams={{
-      redirect_uri: window.location.origin
+      redirect_uri:"https://resilink-g76xribwj-mohd-adils-projects.vercel.app"
     }}
   >
     <App />
