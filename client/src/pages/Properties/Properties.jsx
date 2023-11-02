@@ -4,7 +4,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import {PuffLoader} from  'react-spinners';
 import PropertyCard from '../../components/PropertyCard/PropertyCard';
 import { useState } from 'react';
-import UseProperties from '../../hooks/UseProperties';
+import UseProperties from '../../hooks/useProperties';
 const Properties = () => {
   const{data, isError, isLoading}= UseProperties();
   const[filter , setFilter] = useState("");
@@ -31,6 +31,17 @@ if(isLoading){
   )
 }
 console.log(data);
+
+
+if (!Array.isArray(data)) {
+  // Handle the case where data is not an array (e.g., show an error message).
+  return (
+    <div className="wrapper">
+      <span>Error: Data is not fetch from back-end.</span>
+    </div>
+  );
+}
+
   return (
     <div className="wrapper">
       <div className="flexColCenter paddings innerWidth properties-container">

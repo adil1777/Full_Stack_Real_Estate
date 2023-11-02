@@ -3,7 +3,7 @@ import { Box, Button, Group, NumberInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import React, { useContext } from "react";
 import UserDetailContext from "../../Context/UserDetailContext";
-import UseProperties from "../../hooks/UseProperties";
+import UseProperties from "../../hooks/useProperties";
 import { useMutation } from "react-query";
 import { toast } from "react-toastify";
 import { createResidency } from "../../utils/api";

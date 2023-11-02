@@ -5,7 +5,7 @@ import "swiper/css";
 import "./Residencies.css";
 import { sliderSettings } from "../../utils/common";
 import PropertyCard from "../PropertyCard/PropertyCard";
-import UseProperties from "../../hooks/UseProperties";
+import UseProperties from "../../hooks/useProperties";
 import {PuffLoader} from 'react-spinners'
 
 const Residencies = () => {
@@ -53,7 +53,7 @@ const Residencies = () => {
                    </SwiperSlide>
                  ))
           ) : (
-               <div>No data available.</div>
+               <div>Error: Data is not fetch from back-end.</div>
                 )}
           </Swiper>
       </div>
