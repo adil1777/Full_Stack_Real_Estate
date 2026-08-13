@@ -1,6 +1,8 @@
 import asyncHandler from "express-async-handler";
-
 import { prisma } from "../config/prismaConfig.js";
+import { messages } from "../utils/messages.js";
+import { statusCodes } from "../utils/statusCodes.js";
+
 
 export const createResidency = asyncHandler(async (req, res) => {
   const {
@@ -30,8 +32,12 @@ export const createResidency = asyncHandler(async (req, res) => {
         owner: { connect: { email: "mohdadil0760@gmail.com" } },
       },
     });
+
+    return res.status(statusCodes.CREATED).json({
+      message : messages.RESIDENCY_CREATED,
+      residency,
+    });
     
-    res.send({message: "Residency created successfully",residency});
 }catch (err) {
     console.error("Error creating residency:", err);
     if (err.code === "P2002") {
@@ -50,11 +56,15 @@ export const getAllResidencies = async (req, res) => {
           createdAt: "desc",
         },
       });
-      res.send(residencies);
+
+       return res.status(statusCodes.OK).json({
+      success: true,
+      data: residencies
+    });
     } catch (error) {
       // Handle the error here
       console.error("An error occurred:", error.message);
-      res.status(500).send("An error occurred while fetching residencies");
+      res.status(statusCodes.INTERNAL_SERVER_ERROR).send(messages.SOMETHING_WENT_WRONG);
     }
   };
 
